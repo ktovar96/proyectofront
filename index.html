@@ -36,8 +36,32 @@
 
         </tbody>
     </table>
+
+    <div id="productos"></div>
+        <p>**Productos**</p>
+        <form id = "frmProduct">
+            <label for = "inpPName">Nombre:</label>
+            <input type="text" id ="inpPName">
+            <label for="inpPQuant"> Cantidad:</label>
+            <input type="number" id="inpPQuant"> 
+            <label for="inpPCost">Costo:</label>
+            <input type="number" id="InpPCost">
+            <button type="button" id="btnSaveProduct">Guardar</button>
+        </form>
+    <div id = "clientes"> 
+        <p>**Clientes**</p>
+        <form id="frmClient">
+            <label for="inpCName">Nombre:</label>
+            <input type ="text" id="inpCName">
+            <label for="inpCRFC">RFC:</label>
+            <input type="text" id="inpCRFC">
+            <label for="InpCZipcode">Codigo Postal:</label>
+            <input type="text" id="inpCZipcode">
+            <button type="button" id="btnSaveClient">Guardar</button>
+        </form>
+    </div>
+<script src="src/main.js"> </script> 
 <script src="src/clients.js"> </script>
 <script src="src/product.js"> </script> 
-<script src="src/main.js"> </script> 
 </body>
 </html>
