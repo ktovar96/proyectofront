@@ -1,7 +1,8 @@
 class main {
     constructor(){
-        //this.productos = new Map();
+        this.productos = new Map();
         //this.venta = new Array(); //id : 1, cantidad, precio
+        this.detalles = [2, 4, 6, 7, 8, 9];
         let btnadd = document.getElementById("btnadd");
         let btnSaveClient = document.getElementById("btnSaveClient");
         let btnSavePrduct = document.getElementById('btnSaveProduct');
@@ -21,6 +22,14 @@ class main {
         
         cel1.innerHTML =  selProducts.options[selProducts.selectedIndex].text;
         cel2.innerHTML =  inpQuantity.value;
+        let productId = selProducts.options[selProducts.selectedIndex].value;
+        console.log(this.productos);
+        let info = {
+            id : productId,
+            quantity : inpQuantity,
+            cost : this.productos.get(productId).cost
+        }
+        console.log(info);
     }
 
     addClientes(){
@@ -74,4 +83,4 @@ class main {
     }
 }
 
-new main();
+let app = new main();

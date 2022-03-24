@@ -10,7 +10,9 @@ class product {
         })
         .then (res => res.json())
         .then (res => {
+            console.log(app.detalles);
             res.forEach(p => {
+                app.productos.set(p.id, p);
                 let option = document.createElement('option');
                 option.text = p.name;
                 option.value = p.id;
