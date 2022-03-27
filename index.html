@@ -8,11 +8,14 @@
 </head>
 <body>
     <h2>Facturación</h2>    
+    <label>Fecha:</label>
+    <input type="datetime-local" id="inpDate"/>
     <label>Cliente:
         <select name = "select" id = "selClient">
             <option value="">Seleccione</option>
         </select>
     </label>
+    <br><br>
     <label> Productos:
         <select name="selProducts" id="selProducts">
             <option value="">Seleccione</option>
@@ -20,7 +23,7 @@
     </label>
     <label> Cantidad </label>
     <input type="number" id="quantity"/>
-    <button type="button" id="btnadd">Agregar</button> <br>
+    <button type="button" id="btnadd">Agregar</button> <br><br>
     <table id="table" border="1">
         <thead>
             <tr>
@@ -36,6 +39,8 @@
 
         </tbody>
     </table>
+
+    <button type = "button" id="btnSaveInvoice">Guardar</button>
 
     <div id="productos"></div>
         <p>**Productos**</p>

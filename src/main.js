@@ -1,14 +1,16 @@
 class main {
     constructor(){
         this.productos = new Map();
-        //this.venta = new Array(); //id : 1, cantidad, precio
+        this.venta = new Array(); 
         this.detalles = [2, 4, 6, 7, 8, 9];
         let btnadd = document.getElementById("btnadd");
         let btnSaveClient = document.getElementById("btnSaveClient");
         let btnSavePrduct = document.getElementById('btnSaveProduct');
+        let btnSaveInvoice = document.getElementById('btnSaveInvoice');
         btnadd.addEventListener('click', this.add);
         btnSaveClient.addEventListener('click', this.addClientes);
         btnSavePrduct.addEventListener('click', this.addProductos);
+        btnSaveInvoice.addEventListener('click', this.addInvoiceDetails);
     }
 
     add(){
@@ -23,13 +25,14 @@ class main {
         cel1.innerHTML =  selProducts.options[selProducts.selectedIndex].text;
         cel2.innerHTML =  inpQuantity.value;
         let productId = selProducts.options[selProducts.selectedIndex].value;
-        console.log(this.productos);
+        console.log(app.productos);
         let info = {
             id : productId,
-            quantity : inpQuantity,
-            cost : this.productos.get(productId).cost
+            quantity : inpQuantity.value,
+            cost : app.productos.get(parseInt(productId)).cost
         }
-        console.log(info);
+        app.venta.push(info);
+        console.log(app.venta);
     }
 
     addClientes(){
@@ -54,7 +57,7 @@ class main {
         .then (res => res.json())
         .then (res => {
             console.log(res);
-        })
+        });
     }
     
     addProductos(){
@@ -79,7 +82,35 @@ class main {
         .then (res => res.json())
         .then (res => {
             console.log(res);
-        })
+        });
+    }
+
+    _operacionTotal(){
+        let sum = 0;
+        app.venta.forEach(p => {
+            let mult = p.quantity * p.cost;
+            sum += mult; 
+        });
+        console.log(sum);
+        return sum;
+    }
+
+    _tax(total){
+        return total * 0.16;
+    }
+
+    addInvoiceDetails(){
+        let datetime = document.getElementById('inpDate').value;
+        let clientId = document.getElementById('selClient').value;
+        let total = app._operacionTotal();
+        let info = {
+            client_id: clientId,
+            total: total,
+            tax: app._tax(total),
+            dato: datetime,
+            productos: app.venta 
+        }
+        console.log(info);
     }
 }
 
